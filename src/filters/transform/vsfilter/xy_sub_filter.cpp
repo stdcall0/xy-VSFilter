@@ -1126,6 +1126,7 @@ STDMETHODIMP XySubFilter::Info(long lIndex, AM_MEDIA_TYPE** ppmt, DWORD* pdwFlag
         //{
         //    *ppmt = CreateMediaType(&m_pSubtitleInputPin[i]->m_mt);
         //}
+        return E_INVALIDARG;
     }
 
     if(pdwFlags)
@@ -1255,9 +1256,17 @@ STDMETHODIMP XySubFilter::Info(long lIndex, AM_MEDIA_TYPE** ppmt, DWORD* pdwFlag
         }
     }
 
-    if(ppObject) *ppObject = NULL;
+    if(ppObject) 
+    {
+        *ppObject = NULL;
+        return E_INVALIDARG;
+    }
 
-    if(ppUnk) *ppUnk = NULL;
+    if(ppUnk)
+    {
+        *ppUnk = NULL;
+        return E_INVALIDARG;
+    }
 
     return hr;
 }
