@@ -2722,7 +2722,9 @@ bool CSimpleTextSubtitle::Open(CString fn, int CharSet, CString name)
     fn.Replace('\\', '/');
     if(name.IsEmpty())
     {
-        name = PathFindFileNameW(fn);
+        name = fn.Left(fn.ReverseFind('.'));
+        name = name.Mid(name.ReverseFind('/') + 1);
+        name = name.Mid(name.ReverseFind('.') + 1);
     }
 
     const wchar_t *ext = PathFindExtensionW(fn);

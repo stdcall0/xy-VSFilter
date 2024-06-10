@@ -866,17 +866,7 @@ STDMETHODIMP XySubFilter::get_LanguageName(int iLanguage, WCHAR** ppName)
 
             if(i < pSubStream->GetStreamCount())
             {
-                WCHAR* subName;
-                pSubStream->GetStreamInfo(i, &subName, NULL);
-                CStringW name = subName;
-                CoTaskMemFree(subName);
-                name = name.Left(name.ReverseFind('.'));
-                name = name.ReverseFind('.') == -1 ? _T("und") : name.Mid(name.ReverseFind('.')+1);
-
-                *ppName = (WCHAR*)CoTaskMemAlloc((name.GetLength() + 1) * sizeof(WCHAR));
-                if (!(*ppName))
-                    return E_OUTOFMEMORY;
-                wcscpy(*ppName, name);
+                pSubStream->GetStreamInfo(i, ppName, NULL);
 
                 hr = NOERROR;
                 break;
