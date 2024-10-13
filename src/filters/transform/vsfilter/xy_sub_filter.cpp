@@ -250,6 +250,7 @@ XySubFilter::XySubFilter( LPUNKNOWN punk,
         }
         return use_legacy_vsfilter;
     };
+    m_xy_bool_opt[BOOL_VS_ASS_RENDERING] = true;
 
     CacheManager::GetPathDataMruCache()->SetMaxItemNum(m_xy_int_opt[INT_PATH_DATA_CACHE_MAX_ITEM_NUM]);
     CacheManager::GetScanLineData2MruCache()->SetMaxItemNum(m_xy_int_opt[INT_SCAN_LINE_DATA_CACHE_MAX_ITEM_NUM]);
