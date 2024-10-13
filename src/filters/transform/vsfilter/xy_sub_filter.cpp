@@ -1419,7 +1419,7 @@ STDMETHODIMP XySubFilter::RequestFrame( REFERENCE_TIME start, REFERENCE_TIME sto
 
     HRESULT hr;
 
-    if (!/*m_xy_bool_opt[BOOL_VS_ASS_RENDERING]*/true) {
+    if (!m_xy_bool_opt[BOOL_VS_ASS_RENDERING]) {
         do {
             CComPtr<ISubRenderFrame> sub_render_frame;
             {
